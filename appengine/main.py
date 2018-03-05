@@ -19,7 +19,7 @@ import pubsub_utils
 
 class PushToPubSub(webapp2.RequestHandler):
     def get(self, topic):
-        msg = self.request.GET['message']
+        msg = self.request.GET.get('message', None)
         msg = str(time.time()) if msg is None else msg
         pubsub_utils.publish_to_topic(topic, msg)
 
