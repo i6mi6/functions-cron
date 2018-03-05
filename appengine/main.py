@@ -19,7 +19,9 @@ import pubsub_utils
 
 class PushToPubSub(webapp2.RequestHandler):
     def get(self, topic):
-        pubsub_utils.publish_to_topic(topic, str(time.time()))
+        msg = self.request.GET['message']
+        msg = str(time.time()) if msg is None else msg
+        pubsub_utils.publish_to_topic(topic, msg)
 
         self.response.headers['Content-Type'] = 'application/json'
         self.response.write(json.dumps({"status": "200"}))

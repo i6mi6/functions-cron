@@ -3,3 +3,13 @@ cron:
   url: /publish/good-morning
   schedule: every day 08:00
   timezone: America/New_York
+
+- description: Adds a new task to review finances
+  url: /publish/recurring?message=Review%20finances
+  schedule: every sunday 00:00
+  timezone: America/New_York
+
+- description: Adds a new task to water plants
+  url: /publish/recurring?message=Water%20plants
+  schedule: 1 of month 00:00
+  timezone: America/New_York
